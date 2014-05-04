@@ -38,12 +38,12 @@ describe 'Deck' do
     end
   end
 
-  # describe "create_52_card_deck" do
-  #   it "makes a 52 card deck/array with 52 elements" do
-  #     @deck.create_52_card_deck
-  #     expect(@deck.deck.count).to eq(52)
-  #   end
-  # end
+  describe "create_52_card_deck" do
+    it "makes a 52 card deck/LinkedList" do
+      @deck.create_52_card_deck
+      expect(@deck.create_52_card_deck).to eq(52)
+    end
+  end
 
   # describe "shuffle" do
   #   it "shuffles the deck/rearranges the order of the cards" do

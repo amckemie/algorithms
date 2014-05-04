@@ -114,14 +114,16 @@ class Deck
       # end
 
     i = 0
+    counter = 0
     until i == 4
       (0...ranks.length).each do |j|
-        @deck << Card.new(ranks[j], values[j], suits[i])
+        self.add_card(Card.new(ranks[j], values[j], suits[i]))
+        counter += 1
       end
       i += 1
     end
+    counter
   end
-
 end
 
 # You may or may not need to alter this class
