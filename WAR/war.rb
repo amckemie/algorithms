@@ -129,20 +129,20 @@ class Player
     @hand = Deck.new
   end
 
-  def check_deck
-    if @play_deck.deck.last == nil
-      @play_deck.deck, @hold_deck.deck = @hold_deck.deck, @play_deck.deck
-      @hold_deck.deck = []
-      @counter = 0
-    end
-  end
+  # def check_deck
+  #   if @play_deck.deck.last == nil
+  #     @play_deck.deck, @hold_deck.deck = @hold_deck.deck, @play_deck.deck
+  #     @hold_deck.deck = []
+  #     @counter = 0
+  #   end
+  # end
 
-  def deal_player_card
-    card = @play_deck.deck[@counter]
-    @play_deck.deck[@counter] = nil
-    @counter += 1
-    card
-  end
+  # def deal_player_card
+  #   card = @play_deck.deck[@counter]
+  #   @play_deck.deck[@counter] = nil
+  #   @counter += 1
+  #   card
+  # end
 end
 
 
@@ -153,18 +153,19 @@ class War
     @player1 = Player.new(player1)
     @player2 = Player.new(player2)
     # You will need to shuffle and pass out the cards to each player
+    @deck.create_shuffled_deck
   end
 
-  def create_shuffled_deck
-    @deck.deck = []
-    @deck.create_52_card_deck
-    @deck.shuffle
-  end
+  # def create_shuffled_deck
+  #   @deck.deck = []
+  #   @deck.create_52_card_deck
+  #   @deck.shuffle
+  # end
 
   def deal_cards
     26.times do
-      @player1.play_deck.add_card(@deck.deal_card)
-      @player2.play_deck.add_card(@deck.deal_card)
+      @player1.hand.add_card(@deck.deal_card)
+      @player2.hand.add_card(@deck.deal_card)
     end
   end
 

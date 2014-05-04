@@ -81,53 +81,35 @@ describe 'Player' do
     end
   end
 
-  # describe "check_deck" do
-  #   it ""
-  # end
-
-  # describe "deal_player_card" do
-  #   before(:each) do
-  #     @ashley.play_deck.create_52_card_deck
-  #   end
-
-  #   it "returns the card at the index of counter" do
-  #     @ashley.play_deck.
-  #   end
-
-  #   it "sets the deck at index counter to nil" do
-  #   end
-
-  #   it "counter increments by 1" do
-  #   end
-
-  #   it ""
-  # end
-
 end
 
 
-# describe "War" do
-#   describe "create_shuffled_deck" do
-#     it "creates a 52 card deck and shuffles it" do
-#       war = War.new("ashley", "Clay")
-#       war.create_shuffled_deck
-#       expect(war.deck.deck.count).to eq(52)
-#     end
-#   end
+describe "War" do
+  describe "initialize" do
+    it "creates a 52 card deck and shuffles it" do
+      war = War.new("ashley", "Clay")
+      expect(war.deck.deck.front.class).to eq(Card)
+    end
+  end
 
-#   describe "deal_cards" do
-#     it "deals a hand of 26 cards to each player" do
-#       war = War.new("ashley", "Clay")
-#       war.create_shuffled_deck
-#       war.deal_cards
+  describe "deal_cards" do
+    it "deals a hand of 26 cards to each player" do
+      war = War.new("ashley", "Clay")
+      temp_deck = war.deck.deck
+      war.deal_cards
 
-#       p1_hand = war.player1.hand.deck
-#       p2_hand = war.player2.hand.deck
+      p1_hand = war.player1.hand.deck
+      p2_hand = war.player2.hand.deck
 
-#       expect(p1_hand.count).to eq(26)
-#       expect(p2_hand.count).to eq(26)
-#       expect(p1_hand).to_not eq(p2_hand)
-#     end
-#   end
-# end
+
+      expect(p1_hand.front.class).to eq(Card)
+      expect(p1_hand.back.class).to eq(Card)
+      expect(p2_hand.front.class).to eq(Card)
+      expect(p2_hand.back.class).to eq(Card)
+      expect(p1_hand.front).to_not eq(p2_hand.front)
+      expect(temp_deck.front).to eq(nil)
+      expect(temp_deck.back).to eq(nil)
+    end
+  end
+end
 
