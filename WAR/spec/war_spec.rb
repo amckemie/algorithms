@@ -55,16 +55,18 @@ describe 'Deck' do
   #   end
   # end
 
-  # describe "deal_card" do
-  #   it "deals the top card in the deck/removes the first element from the array" do
-  #     @deck.create_52_card_deck
-  #     @deck.shuffle
-  #     card = @deck.deck.first
-  #     test = @deck.deal_card
-  #     expect(test).to eq(card)
-  #     expect(@deck.deck.count).to eq(51)
-  #   end
-  # end
+  describe "deal_card" do
+    it "deals the top card in the deck/changes the front pointer of the LinkedList" do
+      card1 = Card.new("J", 11, "Spades")
+      card2 = Card.new("A", 14, "Clubs")
+      @deck.add_card(card1)
+      @deck.add_card(card2)
+      test = @deck.deal_card
+      expect(test.class).to eq(Card)
+      expect(@deck.deck.front).to_not eq(card1)
+      expect(@deck.deck.back).to eq(card2)
+    end
+  end
 end
 
 # describe 'Player' do

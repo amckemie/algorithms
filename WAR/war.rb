@@ -24,16 +24,22 @@ class LinkedList
     if @front == nil && @back == nil
       nil
     elsif @back == @front
+      node = @front
       @back = nil
       @front = nil
+      return node
     elsif position == :front
+      node = @front
       @front = @front.in_back
       @front.in_front.in_back = nil
       @front.in_front = nil
+      return node
     elsif position == :back
+      node = @back
       @back = @back.in_front
       @back.in_back.in_front = nil
       @back.in_back = nil
+      return node
     end
   end
 end
@@ -91,7 +97,7 @@ class Deck
 
   # Remove the top card from your deck and return it
   def deal_card
-    @deck.shift
+    @deck.remove(:front)
   end
 
   # Reset this deck with 52 cards
