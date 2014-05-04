@@ -83,17 +83,17 @@ class Deck
   end
 
   # Mix around the order of the cards in your deck
-  def shuffle # You can't use .shuffle!
-    temp_deck = []
+  # def shuffle # You can't use .shuffle!
+  #   temp_deck = []
 
-    until @deck.length == 0
-      index = rand(0...@deck.length)
-      temp_deck << @deck[index]
-      @deck.delete_at(index)
-    end
+  #   until @deck.length == 0
+  #     index = rand(0...@deck.length)
+  #     temp_deck << @deck[index]
+  #     @deck.delete_at(index)
+  #   end
 
-    @deck = temp_deck
-  end
+  #   @deck = temp_deck
+  # end
 
   # Remove the top card from your deck and return it
   def deal_card
@@ -101,7 +101,7 @@ class Deck
   end
 
   # Reset this deck with 52 cards
-  def create_52_card_deck
+  def create_shuffled_deck
     # value = (2..10).to_a
     ranks = (2..10).to_a + ["J", "Q", "k", "A"]
     values = (2..14).to_a
@@ -115,12 +115,20 @@ class Deck
 
     i = 0
     counter = 0
+    temp_deck = []
     until i == 4
       (0...ranks.length).each do |j|
-        self.add_card(Card.new(ranks[j], values[j], suits[i]))
+        temp_deck << Card.new(ranks[j], values[j], suits[i])
         counter += 1
       end
       i += 1
+    end
+
+    #Shuffling cards
+    until temp_deck.length == 0
+      index = rand(0...temp_deck.length)
+      self.add_card(temp_deck[index])
+      temp_deck.delete_at(index)
     end
     counter
   end

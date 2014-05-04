@@ -38,10 +38,16 @@ describe 'Deck' do
     end
   end
 
-  describe "create_52_card_deck" do
+  describe "create_shuffled_deck" do
     it "makes a 52 card deck/LinkedList" do
-      @deck.create_52_card_deck
-      expect(@deck.create_52_card_deck).to eq(52)
+      expect(@deck.create_shuffled_deck).to eq(52)
+    end
+
+    it "rearranges the order of the cards" do
+      @deck.create_shuffled_deck
+      deck1 = Deck.new
+      deck1.create_shuffled_deck
+      expect(@deck.deck.front).to_not eq(deck1.deck.front)
     end
   end
 
