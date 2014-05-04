@@ -27,13 +27,16 @@ describe 'Deck' do
     end
   end
 
-  # describe 'add_card' do
-  #   it "Adds card to bottom of deck/ends card to end of array" do
-  #     card1 = Card.new("J", 11, "Spades")
-  #     @deck.add_card(card1)
-  #     expect(@deck_array[@deck_array.length-1]).to eq(card1)
-  #   end
-  # end
+  describe 'add_card' do
+    it "Adds card to bottom of deck/back of the LinkedList" do
+      card1 = Card.new("J", 11, "Spades")
+      card2 = Card.new("A", 14, "Clubs")
+      @deck.add_card(card1)
+      @deck.add_card(card2)
+      expect(@deck.deck.front).to eq(card1)
+      expect(@deck.deck.back).to eq(card2)
+    end
+  end
 
   # describe "create_52_card_deck" do
   #   it "makes a 52 card deck/array with 52 elements" do

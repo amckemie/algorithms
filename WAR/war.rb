@@ -73,7 +73,7 @@ class Deck
 
   # Given a card, insert it on the bottom your deck
   def add_card(card)
-    @deck << card
+    @deck.add(card, :back)
   end
 
   # Mix around the order of the cards in your deck
