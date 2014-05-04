@@ -3,6 +3,18 @@ require 'rspec'
 require 'pry-debugger'
 require_relative '../war.rb'
 
+describe 'Card' do
+  describe 'initialize' do
+    it "initializes as a 'Node' with an in_front and in_back pointer" do
+      card = Card.new(2, 2, "Spades")
+      expect(card.class).to eq(Card)
+      expect(card.in_front).to eq(nil)
+      expect(card.in_back).to eq(nil)
+    end
+  end
+end
+
+
 describe 'Deck' do
 
   before(:each) do
