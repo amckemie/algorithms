@@ -82,19 +82,6 @@ class Deck
     @deck.add(card, :back)
   end
 
-  # Mix around the order of the cards in your deck
-  # def shuffle # You can't use .shuffle!
-  #   temp_deck = []
-
-  #   until @deck.length == 0
-  #     index = rand(0...@deck.length)
-  #     temp_deck << @deck[index]
-  #     @deck.delete_at(index)
-  #   end
-
-  #   @deck = temp_deck
-  # end
-
   # Remove the top card from your deck and return it
   def deal_card
     @deck.remove(:front)
@@ -136,12 +123,10 @@ end
 
 # You may or may not need to alter this class
 class Player
-  attr_reader :play_deck, :hold_deck, :name, :counter
+  attr_reader :hand, :name
   def initialize(name)
     @name = name
-    @play_deck = Deck.new
-    @hold_deck = Deck.new
-    @counter = 0
+    @hand = Deck.new
   end
 
   def check_deck
