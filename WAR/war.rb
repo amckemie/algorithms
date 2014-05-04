@@ -172,7 +172,7 @@ class War
   def add_player_card(card_hash)
     card_hash.each do |key,value|
       value.each do |card|
-        key.hold_deck.add_card(card)
+        key.hand.add_card(card)
       end
     end
   end
@@ -181,21 +181,18 @@ class War
   def play_game
     num_turns = 0
 
-    create_shuffled_deck
     deal_cards
 
-    until @player1.play_deck.deck.count == 0 || @player2.play_deck.deck.count == 0
+    until (@player1.hand.deck.front == nil && @player1.hand.deck.back == nil) || (@player2.hand.deck.front == nil && @player2.hand.deck.back == nil)
       num_turns += 1
 
-      p1_card = @player1.deal_player_card
-      p2_card = @player2.deal_player_card
+      p1_card = @player1.hand.deal_card
+      p2_card = @player2.hand.deal_card
       cards = WarAPI.play_turn(@player1, p1_card, @player2, p2_card)
       add_player_card(cards)
-      @player1.check_deck
-      @player2.check_deck
     end
 
-    if @player1.play_deck.deck.count == 0
+    if @player1.hand.deck.front == nil
       puts "#{@player2.name}"
       return num_turns
     else
