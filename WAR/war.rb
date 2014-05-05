@@ -128,21 +128,6 @@ class Player
     @name = name
     @hand = Deck.new
   end
-
-  # def check_deck
-  #   if @play_deck.deck.last == nil
-  #     @play_deck.deck, @hold_deck.deck = @hold_deck.deck, @play_deck.deck
-  #     @hold_deck.deck = []
-  #     @counter = 0
-  #   end
-  # end
-
-  # def deal_player_card
-  #   card = @play_deck.deck[@counter]
-  #   @play_deck.deck[@counter] = nil
-  #   @counter += 1
-  #   card
-  # end
 end
 
 
@@ -153,14 +138,7 @@ class War
     @player1 = Player.new(player1)
     @player2 = Player.new(player2)
     # You will need to shuffle and pass out the cards to each player
-    @deck.create_shuffled_deck
   end
-
-  # def create_shuffled_deck
-  #   @deck.deck = []
-  #   @deck.create_52_card_deck
-  #   @deck.shuffle
-  # end
 
   def deal_cards
     26.times do
@@ -180,7 +158,8 @@ class War
   # You will need to play the entire game in this method using the WarAPI
   def play_game
     num_turns = 0
-
+    # @deck = Deck.new
+    @deck.create_shuffled_deck
     deal_cards
 
     until (@player1.hand.deck.front == nil && @player1.hand.deck.back == nil) || (@player2.hand.deck.front == nil && @player2.hand.deck.back == nil)
