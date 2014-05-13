@@ -3,6 +3,7 @@ require 'rspec'
 require 'pry-debugger'
 require_relative '../war.rb'
 
+<<<<<<< HEAD
 describe 'Card' do
   describe 'initialize' do
     it "initializes as a 'Node' with an in_front and in_back pointer" do
@@ -113,3 +114,5 @@ describe "War" do
   end
 end
 
+=======
+>>>>>>> f45e33c8e8ce818ab53aeecf746490ad4f6106d2

@@ -16,13 +16,21 @@ module Set1
   #0(n^2)
   def self.find_sum_2(array, sum = 0)
     return false if array.length == 0
+    hash = Hash.new
 
-    (0...array.length).each do |i|
-      (i...array.length).each do |j|
-        return true if array[i] + array[j] == sum
-      end
+    array.each do |i|
+      hash[i] = true
     end
-    false
+
+    array.each do |i|
+      return true if hash[sum-i]
+
+    # (0...array.length).each do |i|
+    #   (i...array.length).each do |j|
+    #     return true if array[i] + array[j] == sum
+    #   end
+    # end
+    # false
   end
 
   #O(n^3)

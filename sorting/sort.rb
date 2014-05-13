@@ -37,11 +37,11 @@ module Sort
       end
     end
 
-    if l_i == l_arr.length
+    # if l_i == l_arr.length
       result = result + r_arr[r_i..-1]
-    else
+    # else
       result = result + l_arr[l_i..-1]
-    end
+    # end
     result
   end
 
@@ -56,3 +56,5 @@ module Sort
     end
   end
 end
+
+
