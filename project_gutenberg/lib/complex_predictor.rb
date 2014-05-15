@@ -1,5 +1,5 @@
 require_relative 'predictor'
-require 'pry-debugger'
+# require 'pry-debugger'
 
 
 class ComplexPredictor < Predictor
@@ -8,8 +8,9 @@ class ComplexPredictor < Predictor
   #
   # Returns nothing.
   def train!
-    @data = {}
 
+
+    @data = {}
     @all_books.each do |category, books|
       @data[category] = {
         words: {}

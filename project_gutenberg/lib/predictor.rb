@@ -19,6 +19,7 @@ class Predictor
     #   :physics => ...,
     #   ...
     # }
+    @title
     @all_books = load_books(:training)
   end
 
@@ -95,7 +96,9 @@ class Predictor
       ic = Iconv.new('UTF-8', 'UTF-8//IGNORE')
       string = ic.iconv(string)
     end
+
     string.split(/\W+/).map(&:downcase) # Split by non-words
+
   end
 
   # Internal: Load books from files.
@@ -117,7 +120,10 @@ class Predictor
         next if file.split("/").last[0] == "." # Ignore hidden files
 
         content = tokenize(File.read(file))
-        books[category] << [file, content]
+        index_title = content.index("title")
+        index_author = content.index("author")
+        title = content[index_title, index_author]
+        books[category] << [file, content, title]
       end
     end
     books
