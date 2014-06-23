@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class LinkedList
   attr_reader :front, :back
   def initialize
@@ -62,7 +61,6 @@ class Card
 =======
 # This class is complete. You do not need to alter this
 class Card
->>>>>>> f45e33c8e8ce818ab53aeecf746490ad4f6106d2
   # Rank is the rank of the card, 2-10, J, Q, K, A
   # Value is the numeric value of the card, so J = 11, A = 14
   # Suit is the suit of the card, Spades, Diamonds, Clubs or Hearts
@@ -70,11 +68,9 @@ class Card
     @rank = rank
     @value = value
     @suit = suit
-<<<<<<< HEAD
+
     @in_front = nil
     @in_back = nil
-=======
->>>>>>> f45e33c8e8ce818ab53aeecf746490ad4f6106d2
   end
 end
 
@@ -82,30 +78,21 @@ end
 class Deck
   attr_accessor :deck
   def initialize
-<<<<<<< HEAD
     @deck = LinkedList.new # Determine the best way to hold the cards
-=======
-    @deck = nil # Determine the best way to hold the cards
->>>>>>> f45e33c8e8ce818ab53aeecf746490ad4f6106d2
   end
 
   # Given a card, insert it on the bottom your deck
   def add_card(card)
-<<<<<<< HEAD
     @deck.add(card, :back)
-=======
-
   end
 
   # Mix around the order of the cards in your deck
   def shuffle # You can't use .shuffle!
 
->>>>>>> f45e33c8e8ce818ab53aeecf746490ad4f6106d2
   end
 
   # Remove the top card from your deck and return it
   def deal_card
-<<<<<<< HEAD
     @deck.remove(:front)
   end
 
@@ -141,24 +128,17 @@ class Deck
     end
     counter
   end
-=======
-
-  end
+ end
 
   # Reset this deck with 52 cards
   def create_52_card_deck
 
   end
-
->>>>>>> f45e33c8e8ce818ab53aeecf746490ad4f6106d2
 end
 
 # You may or may not need to alter this class
 class Player
-<<<<<<< HEAD
   attr_reader :hand, :name
-=======
->>>>>>> f45e33c8e8ce818ab53aeecf746490ad4f6106d2
   def initialize(name)
     @name = name
     @hand = Deck.new
@@ -167,18 +147,13 @@ end
 
 
 class War
-<<<<<<< HEAD
   attr_reader :player1, :player2, :deck
-=======
->>>>>>> f45e33c8e8ce818ab53aeecf746490ad4f6106d2
   def initialize(player1, player2)
     @deck = Deck.new
     @player1 = Player.new(player1)
     @player2 = Player.new(player2)
     # You will need to shuffle and pass out the cards to each player
   end
-
-<<<<<<< HEAD
   def deal_cards
     26.times do
       @player1.hand.add_card(@deck.deal_card)
@@ -228,12 +203,10 @@ class War
     total/100
   end
 
-=======
   # You will need to play the entire game in this method using the WarAPI
   def play_game
     # WarAPI.play_turn()
   end
->>>>>>> f45e33c8e8ce818ab53aeecf746490ad4f6106d2
 end
 
 
